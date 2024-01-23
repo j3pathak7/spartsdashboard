@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { CiFilter } from "react-icons/ci";
 import { TbDots } from "react-icons/tb";
 
@@ -8,11 +9,9 @@ const DynamicTable = ({ data }) => {
       <tbody>
         {data.map((row, rowIndex) => (
           <tr key={rowIndex} className="border-b">
-            {/* Checkbox cell */}
             <td key={`cell-checkbox-${rowIndex}`} className="p-2">
               <input type="checkbox" />
             </td>
-            {/* Data cells */}
             {row.map((cell, cellIndex) => (
               <td key={`cell-${rowIndex}-${cellIndex}`} className="p-2">
                 {cell}
@@ -25,58 +24,121 @@ const DynamicTable = ({ data }) => {
   );
 };
 
-// Div5.js
 const Div5 = () => {
-  const sampleData = [
+  const [filter, setFilter] = useState("All"); // Default filter
+
+  const sampleDataClasses = [
     [
-      "Row 1 Data 1",
-      "Row 1 Data 2",
-      "Row 1 Data 3",
-      "Row 1 Data 4",
-      "Row 1 Data 5",
-      "Row 1 Data 6",
+      "Mon, 05 Sept",
+      "2:30 PM - 3:30 PM",
+      "Intermediate Tennis Class",
+      "Emma W and 120 more",
+      "View",
     ],
     [
-      "Row 2 Data 1",
-      "Row 2 Data 2",
-      "Row 2 Data 3",
-      "Row 2 Data 4",
-      "Row 2 Data 5",
-      "Row 2 Data 6",
-    ],
-    [
-      "Row 3 Data 1",
-      "Row 3 Data 2",
-      "Row 3 Data 3",
-      "Row 3 Data 4",
-      "Row 3 Data 5",
-      "Row 3 Data 6",
-    ],
-    [
-      "Row 4 Data 1",
-      "Row 4 Data 2",
-      "Row 4 Data 3",
-      "Row 4 Data 4",
-      "Row 4 Data 5",
-      "Row 4 Data 6",
-    ],
-    [
-      "Row 5 Data 1",
-      "Row 5 Data 2",
-      "Row 5 Data 3",
-      "Row 5 Data 4",
-      "Row 5 Data 5",
-      "Row 5 Data 6",
-    ],
-    [
-      "Row 6 Data 1",
-      "Row 6 Data 2",
-      "Row 6 Data 3",
-      "Row 6 Data 4",
-      "Row 6 Data 5",
-      "Row 6 Data 6",
+      "Wed, 07 Sept",
+      "4:00 PM - 5:00 PM",
+      "Advanced Chess Workshop",
+      "Alex M and 90 more",
+      "View",
     ],
   ];
+
+  const sampleDataMeetings = [
+    [
+      "Tue, 10 Sept",
+      "10:00 AM - 11:00 AM",
+      "Team Meeting",
+      "John D and 15 more",
+      "View",
+    ],
+    [
+      "Thu, 12 Sept",
+      "3:00 PM - 4:00 PM",
+      "Client Presentation",
+      "Jane S and 25 more",
+      "View",
+    ],
+  ];
+
+  const sampleDataEvents = [
+    [
+      "Sat, 15 Sept",
+      "7:00 PM - 9:00 PM",
+      "Concert in the Park",
+      "Local Band and Special Guests",
+      "Buy Tickets",
+    ],
+    [
+      "Sun, 23 Sept",
+      "2:00 PM - 4:00 PM",
+      "Community Fair",
+      "Food, Games, and Fun for All",
+      "More Info",
+    ],
+  ];
+
+  const sampleDataAll = [
+    [
+      "Fri, 01 Sept",
+      "3:00 PM - 4:00 PM",
+      "Beginners Badminton Class",
+      "Jonas K and 151 more",
+      "View",
+    ],
+    [
+      "Mon, 05 Sept",
+      "2:30 PM - 3:30 PM",
+      "Intermediate Tennis Class",
+      "Emma W and 120 more",
+      "View",
+    ],
+    [
+      "Wed, 07 Sept",
+      "4:00 PM - 5:00 PM",
+      "Advanced Chess Workshop",
+      "Alex M and 90 more",
+      "View",
+    ],
+    [
+      "Thu, 15 Sept",
+      "3:30 PM - 4:30 PM",
+      "Swimming Lessons",
+      "Sophia L and 200 more",
+      "View",
+    ],
+    [
+      "Tue, 20 Sept",
+      "5:00 PM - 6:00 PM",
+      "Football Practice",
+      "Daniel H and 180 more",
+      "View",
+    ],
+    [
+      "Sat, 25 Sept",
+      "6:00 PM - 7:00 PM",
+      "Basketball Training",
+      "Olivia G and 160 more",
+      "View",
+    ],
+  ];
+
+  const handleFilterChange = (selectedFilter) => {
+    setFilter(selectedFilter);
+  };
+
+  const getFilteredData = () => {
+    switch (filter) {
+      case "Classes":
+        return sampleDataClasses;
+      case "Meetings":
+        return sampleDataMeetings;
+      case "Events":
+        return sampleDataEvents;
+      default:
+        return sampleDataAll;
+    }
+  };
 
   return (
     <div className="flex flex-col">
@@ -84,16 +146,36 @@ const Div5 = () => {
         <div className="p-4">UPCOMING SCHEDULE</div>
         <div className="flex text-sm text-white items-center flex-wrap">
           <CiFilter size={24} style={{ color: "black" }} />
-          <button className="bg-gray-600 m-2 p-2 rounded-xl w-full md:w-24">
+          <button
+            className={`bg-gray-400 m-2 p-2 rounded-xl w-full md:w-24 ${
+              filter === "All" && "bg-gray-800"
+            }`}
+            onClick={() => handleFilterChange("All")}
+          >
             All
           </button>
-          <button className="bg-gray-400 m-2 p-2 rounded-xl w-full md:w-24">
+          <button
+            className={`bg-gray-400 m-2 p-2 rounded-xl w-full md:w-24 ${
+              filter === "Classes" && "bg-gray-800"
+            }`}
+            onClick={() => handleFilterChange("Classes")}
+          >
             Classes
           </button>
-          <button className="bg-gray-400 m-2 p-2 rounded-xl w-full md:w-24">
+          <button
+            className={`bg-gray-400 m-2 p-2 rounded-xl w-full md:w-24 ${
+              filter === "Meetings" && "bg-gray-800"
+            }`}
+            onClick={() => handleFilterChange("Meetings")}
+          >
             Meetings
           </button>
-          <button className="bg-gray-400 m-2 p-2 rounded-xl w-full md:w-24">
+          <button
+            className={`bg-gray-400 m-2 p-2 rounded-xl w-full md:w-24 ${
+              filter === "Events" && "bg-gray-800"
+            }`}
+            onClick={() => handleFilterChange("Events")}
+          >
             Events
           </button>
         </div>
@@ -101,7 +183,7 @@ const Div5 = () => {
           <TbDots size={32} />
         </div>
       </div>
-      <DynamicTable data={sampleData} />
+      <DynamicTable data={getFilteredData()} />
     </div>
   );
 };

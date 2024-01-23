@@ -41,7 +41,7 @@ const Menu = () => {
       </div>
       <div className="flex items-center mb-4">
         <FaMoneyBillAlt className="mr-2" /> {/* Money bill icon */}
-        <Link href="#" className="py-1 text-sm">
+        <Link href="feepayments" className="py-1 text-sm">
           Fee Payments
         </Link>
       </div>

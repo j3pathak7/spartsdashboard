@@ -2,7 +2,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div>
+    <div className="flex justify-center items-center py-20 text-4xl">
       <div>Schedule</div>
     </div>
   );
