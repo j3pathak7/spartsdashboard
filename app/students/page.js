@@ -40,6 +40,18 @@ const studentsData = [
   { id: 36, name: "Vihaan Mehra", age: 8, sport: "Tennis" },
   { id: 37, name: "Kyra Gupta", age: 11, sport: "Swimming" },
   { id: 38, name: "Aaradhya Patel", age: 7, sport: "Football" },
+  { id: 39, name: "Ayaan Shah", age: 9, sport: "Table Tennis" },
+  { id: 40, name: "Myra Verma", age: 8, sport: "Basketball" },
+  { id: 41, name: "Arham Singh", age: 7, sport: "Football" },
+  { id: 42, name: "Anvi Patel", age: 10, sport: "Chess" },
+  { id: 43, name: "Rudra Kapoor", age: 11, sport: "Cricket" },
+  { id: 44, name: "Vivaan Sharma", age: 6, sport: "Badminton" },
+  { id: 45, name: "Aadhya Mehra", age: 12, sport: "Volleyball" },
+  { id: 46, name: "Kiara Joshi", age: 5, sport: "Tennis" },
+  { id: 47, name: "Aryan Patel", age: 9, sport: "Table Tennis" },
+  { id: 48, name: "Aarohi Singh", age: 8, sport: "Basketball" },
+  { id: 49, name: "Arjun Thakur", age: 13, sport: "Swimming" },
+  { id: 50, name: "Anaya Choudhary", age: 7, sport: "Football" },
 ];
 
 const Page = () => {
@@ -104,14 +116,26 @@ const Page = () => {
           </select>
         </div>
       </div>
-      <ul>
-        {filteredStudents.map((student) => (
-          <li key={student.id}>
-            <strong>{student.name}</strong> - Age: {student.age}, Sport:{" "}
-            {student.sport}
-          </li>
-        ))}
-      </ul>
+      <table className="border-collapse border border-gray-400 w-full mt-4">
+        <thead>
+          <tr className="bg-gray-200">
+            <th className="border border-gray-400 p-2">ID</th>
+            <th className="border border-gray-400 p-2">Name</th>
+            <th className="border border-gray-400 p-2">Age</th>
+            <th className="border border-gray-400 p-2">Sport</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredStudents.map((student) => (
+            <tr key={student.id}>
+              <td className="border border-gray-400 p-2">{student.id}</td>
+              <td className="border border-gray-400 p-2">{student.name}</td>
+              <td className="border border-gray-400 p-2">{student.age}</td>
+              <td className="border border-gray-400 p-2">{student.sport}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
