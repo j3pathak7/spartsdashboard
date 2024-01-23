@@ -1,4 +1,5 @@
 import { FaBell, FaCog } from "react-icons/fa";
+import Link from "next/link";
 
 const currentDate = new Date().toLocaleDateString("en-US", {
   weekday: "short",
@@ -10,12 +11,14 @@ const Navbar = () => {
   return (
     <div className="flex flex-col md:flex-row items-center w-full p-3">
       <div className="w-full md:w-1/4 lg:w-1/6 text-xl flex flex-col items-center mb-2 md:mb-0">
-        <img
-          src="/assets/spartslogo.png"
-          alt="Sparts Logo"
-          className="mx-auto mb-2"
-          style={{ width: "150px" }}
-        />
+        <Link href="/">
+          <img
+            src="/assets/spartslogo.png"
+            alt="Sparts Logo"
+            className="mx-auto mb-2"
+            style={{ width: "150px" }}
+          />
+        </Link>
         <div className="text-sm">{currentDate}</div>
       </div>
 

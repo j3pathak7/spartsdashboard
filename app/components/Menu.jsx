@@ -7,22 +7,23 @@ import {
   FaUsersCog,
   FaCalendarAlt,
 } from "react-icons/fa";
+import Link from "next/link";
 
 const Menu = () => {
   return (
-    <div className=" min-h-screen text-white p-6">
+    <div className="min-h-screen text-white p-6">
       <div className="mb-4 text-left font-bold text-sm">Main Menu</div>
       <div className="flex items-center mb-4">
         <FaChartBar className="mr-2" /> {/* Chart icon */}
-        <a href="/dashboard" className="py-1 text-sm">
+        <Link href="/dashboard" className="py-1 text-sm">
           Dashboard
-        </a>
+        </Link>
       </div>
       <div className="flex items-center mb-12">
         <FaGraduationCap className="mr-2" /> {/* Graduation cap icon */}
-        <a href="/management" className="py-1 text-sm">
+        <Link href="/management" className="py-1 text-sm">
           Academy Management
-        </a>
+        </Link>
       </div>
       <div className="mb-4 text-left font-bold text-sm">More</div>
       <div className="flex items-center mb-4">
@@ -34,33 +35,33 @@ const Menu = () => {
       </div>
       <div className="flex items-center mb-4">
         <FaUsers className="mr-2" /> {/* Users icon */}
-        <a href="#" className="py-1 text-sm">
+        <Link href="/students" className="py-1 text-sm">
           Students
-        </a>
+        </Link>
       </div>
       <div className="flex items-center mb-4">
         <FaMoneyBillAlt className="mr-2" /> {/* Money bill icon */}
-        <a href="#" className="py-1 text-sm">
+        <Link href="#" className="py-1 text-sm">
           Fee Payments
-        </a>
+        </Link>
       </div>
       <div className="flex items-center mb-4">
         <FaSearch className="mr-2" /> {/* Search icon */}
-        <a href="#" className="py-1 text-sm">
+        <Link href="/enquiries" className="py-1 text-sm">
           Enquiries
-        </a>
+        </Link>
       </div>
       <div className="flex items-center mb-4">
         <FaUsersCog className="mr-2" /> {/* Users cog icon */}
-        <a href="#" className="py-1 text-sm">
+        <Link href="/coaches" className="py-1 text-sm">
           Coaches
-        </a>
+        </Link>
       </div>
       <div className="flex items-center mb-4">
         <FaCalendarAlt className="mr-2" /> {/* Calendar icon */}
-        <a href="#" className="py-1 text-sm">
+        <Link href="/schedule" className="py-1 text-sm">
           Schedule
-        </a>
+        </Link>
       </div>
     </div>
   );
